@@ -5,6 +5,8 @@ import http from "http";
 import { Server } from "socket.io";
 import connectDB from "./config/db.js";
 import taskRoutes from "./routes/taskRoutes.js";   // ⬅️ NEW
+import authRoutes from "./routes/authRoutes.js";
+
 
 dotenv.config();
 
@@ -36,6 +38,10 @@ io.on("connection", (socket) => {
 
 // API Routes
 app.use("/api/tasks", taskRoutes);   // ⬅️ NEW
+
+
+app.use("/api/auth", authRoutes);
+
 
 // Default route
 app.get("/", (req, res) => {
